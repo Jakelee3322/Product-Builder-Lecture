@@ -1,1 +1,94 @@
-/* Add styles here */
+:root {
+    --primary-color: #4a00e0;
+    --secondary-color: #8e2de2;
+    --text-color: #ffffff;
+    --bg-color: #1a1a2e;
+    --container-bg: #1e1e3f;
+    --button-bg: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    --button-hover-bg: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+.lotto-machine {
+    background-color: var(--container-bg);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary-color);
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: transparent;
+    background: var(--button-bg);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.numbers-display {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background: var(--button-bg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: pop-in 0.5s ease-out forwards;
+}
+
+.generate-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+.generate-btn:hover {
+    background: var(--button-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes pop-in {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
