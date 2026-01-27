@@ -164,3 +164,94 @@ body.light-mode .generate-btn:hover {
         opacity: 1;
     }
 }
+
+.contact-form-container {
+    background-color: var(--container-bg);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary-color-dark);
+    margin-top: 40px;
+    width: 80%;
+    max-width: 500px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.light-mode .contact-form-container {
+    background-color: var(--container-bg-light);
+    border: 1px solid var(--secondary-color-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--text-color-dark);
+    transition: color 0.3s;
+}
+
+body.light-mode .contact-form-container h2 {
+    color: var(--text-color-light);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 8px;
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+    border: 1px solid var(--secondary-color-light);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-color-dark);
+    opacity: 0.7;
+    transition: color 0.3s;
+}
+
+body.light-mode .contact-form input::placeholder,
+body.light-mode .contact-form textarea::placeholder {
+    color: var(--text-color-light);
+}
+
+.contact-form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    background: var(--button-bg);
+    color: var(--text-color-dark);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form button:hover {
+    background: var(--button-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .contact-form button {
+    background: var(--primary-color-light);
+    color: var(--text-color-light);
+    border: 1px solid var(--text-color-light);
+}
+
+body.light-mode .contact-form button:hover {
+    background: var(--secondary-color-light);
+}
