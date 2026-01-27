@@ -1,8 +1,18 @@
 const generateBtn = document.querySelector('.generate-btn');
 const numbersDisplay = document.querySelector('.numbers-display');
+const themeSwitchBtn = document.querySelector('.theme-switch-btn');
 
 generateBtn.addEventListener('click', () => {
     generateLottoNumbers();
+});
+
+themeSwitchBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    if (document.body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light-mode');
+    } else {
+        localStorage.setItem('theme', 'dark-mode');
+    }
 });
 
 function generateLottoNumbers() {
@@ -23,3 +33,10 @@ function generateLottoNumbers() {
         numbersDisplay.appendChild(numberElement);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light-mode') {
+        document.body.classList.add('light-mode');
+    }
+});

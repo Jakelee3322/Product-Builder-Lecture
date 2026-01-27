@@ -1,11 +1,18 @@
 :root {
-    --primary-color: #4a00e0;
-    --secondary-color: #8e2de2;
-    --text-color: #ffffff;
-    --bg-color: #1a1a2e;
-    --container-bg: #1e1e3f;
-    --button-bg: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    --button-hover-bg: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    --primary-color-dark: #4a00e0;
+    --secondary-color-dark: #8e2de2;
+    --text-color-dark: #ffffff;
+    --bg-color-dark: #1a1a2e;
+    --container-bg-dark: #1e1e3f;
+
+    --primary-color-light: #f0f0f0;
+    --secondary-color-light: #dcdcdc;
+    --text-color-light: #333333;
+    --bg-color-light: #ffffff;
+    --container-bg-light: #f9f9f9;
+
+    --button-bg: linear-gradient(45deg, var(--primary-color-dark), var(--secondary-color-dark));
+    --button-hover-bg: linear-gradient(45deg, var(--secondary-color-dark), var(--primary-color-dark));
 }
 
 body {
@@ -14,10 +21,45 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
     margin: 0;
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    --primary-color: var(--primary-color-light);
+    --secondary-color: var(--secondary-color-light);
+    --text-color: var(--text-color-light);
+    --bg-color: var(--bg-color-light);
+    --container-bg: var(--container-bg-light);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    background-image: none;
+}
+
+.theme-switch-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-switch-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background: var(--button-bg);
+    color: var(--text-color-dark);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .theme-switch-btn {
+    background: var(--primary-color-light);
+    color: var(--text-color-light);
+    border: 1px solid var(--text-color-light);
 }
 
 .lotto-machine {
@@ -26,7 +68,14 @@ body {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color-dark);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.light-mode .lotto-machine {
+    background-color: var(--container-bg-light);
+    border: 1px solid var(--secondary-color-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -38,6 +87,13 @@ h1 {
     background: var(--button-bg);
     -webkit-background-clip: text;
     background-clip: text;
+}
+
+body.light-mode h1 {
+    color: var(--text-color-light);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
 }
 
 .numbers-display {
@@ -56,10 +112,16 @@ h1 {
     align-items: center;
     font-size: 1.8rem;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--text-color-dark);
     background: var(--button-bg);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     animation: pop-in 0.5s ease-out forwards;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode .number {
+    background: var(--secondary-color-light);
+    color: var(--text-color-light);
 }
 
 .generate-btn {
@@ -67,7 +129,7 @@ h1 {
     border: none;
     border-radius: 50px;
     background: var(--button-bg);
-    color: var(--text-color);
+    color: var(--text-color-dark);
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
@@ -80,6 +142,16 @@ h1 {
     background: var(--button-hover-bg);
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .generate-btn {
+    background: var(--primary-color-light);
+    color: var(--text-color-light);
+    border: 1px solid var(--text-color-light);
+}
+
+body.light-mode .generate-btn:hover {
+    background: var(--secondary-color-light);
 }
 
 @keyframes pop-in {
