@@ -7,6 +7,7 @@ This is a simple web application that generates lotto numbers. It also includes 
 *   **Lotto Number Generation:** Generates 6 unique numbers between 1 and 45.
 *   **Theme Switcher:** Allows switching between a dark and a light theme. The preference is saved in the browser's local storage.
 *   **Contact Form:** A contact form that submits to Formspree.
+*   **Disqus Comments:** A comment section powered by Disqus, allowing users to leave comments.
 
 ## Deployment
 
