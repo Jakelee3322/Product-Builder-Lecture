@@ -12,7 +12,14 @@ This document outlines the design and development plan for a modern, interactive
 *   **Interactive Trigger:** A clear, prominent button initiates the number generation process.
 *   **Results Display:** The generated numbers are displayed clearly in a dedicated section.
 
-### **2. Visual Design**
+### **2. Partnership Inquiry Form**
+
+*   **Purpose:** Allows users to submit partnership inquiries directly through the website.
+*   **Implementation:** Utilizes Formspree for backend form submission handling, ensuring reliable delivery of messages without requiring server-side code.
+*   **Fields:** Includes fields for "Your Name," "Your Email," and "Your Message."
+*   **Design:** Integrated seamlessly into the website's overall aesthetic, ensuring a clean and user-friendly experience.
+
+### **3. Visual Design**
 
 *   **Theme:** A bold, modern, and engaging design.
 *   **Color Palette:** A vibrant palette with gradients and strong contrasts to create a sense of excitement. The primary colors will be deep blues and purples, with bright accents for interactive elements.
@@ -25,7 +32,7 @@ This document outlines the design and development plan for a modern, interactive
     *   The main button will have a "glow" effect on hover to indicate interactivity.
     *   Cards and containers will have soft, deep drop shadows to create a sense of depth and a "lifted" appearance.
 
-### **3. Technical Implementation**
+### **4. Technical Implementation**
 
 *   **HTML:** Structured with semantic elements (`<header>`, `<main>`, `<footer>`). A `<template>` will be considered for the number display for potential future expansion into a Web Component.
 *   **CSS:** Modern CSS features will be used:
@@ -46,6 +53,7 @@ This document outlines the design and development plan for a modern, interactive
     *   Include a `<h1>` for the title: "Lotto Number Generator".
     *   Create a `div` to display the generated lottery numbers.
     *   Add a `<button>` to trigger the generation.
+    *   **Integrate the partnership inquiry form using Formspree, ensuring the `action` attribute points to the correct Formspree endpoint and includes input fields for name, email, and message.**
 2.  **`style.css`:**
     *   Apply the visual design outlined above.
     *   Style the body, container, title, number display area, and the button.
