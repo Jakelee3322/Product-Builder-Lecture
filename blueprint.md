@@ -1,65 +1,27 @@
-# **Project Blueprint: Lotto Number Generator**
+# Lotto Number Generator
 
-## **Overview**
+This is a simple web application that generates lotto numbers. It also includes a theme switcher and a contact form.
 
-This document outlines the design and development plan for a modern, interactive Lotto Number Generator web application. The goal is to create a visually appealing and user-friendly experience for generating lottery numbers, built with modern web technologies and following best practices for design and accessibility.
+## Features
 
-## **Features & Design**
+*   **Lotto Number Generation:** Generates 6 unique numbers between 1 and 45.
+*   **Theme Switcher:** Allows switching between a dark and a light theme. The preference is saved in the browser's local storage.
+*   **Contact Form:** A contact form that submits to Formspree.
 
-### **1. Core Functionality**
+## Deployment
 
-*   **Number Generation:** Generates a set of 6 unique random numbers between 1 and 45.
-*   **Interactive Trigger:** A clear, prominent button initiates the number generation process.
-*   **Results Display:** The generated numbers are displayed clearly in a dedicated section.
+This project is configured for deployment with Firebase.
 
-### **2. Partnership Inquiry Form**
+### Firebase Configuration
 
-*   **Purpose:** Allows users to submit partnership inquiries directly through the website.
-*   **Implementation:** Utilizes Formspree for backend form submission handling, ensuring reliable delivery of messages without requiring server-side code.
-*   **Fields:** Includes fields for "Your Name," "Your Email," and "Your Message."
-*   **Design:** Integrated seamlessly into the website's overall aesthetic, ensuring a clean and user-friendly experience.
+*   **`.firebaserc`:** Configures the Firebase project ID. **Note:** You need to replace `"YOUR-FIREBASE-PROJECT-ID"` with your actual Firebase project ID.
+*   **`firebase.json`:** Configures Firebase Hosting. It's set to deploy the contents of the current directory.
+*   **`database.rules.json`:** Basic security rules for Firestore, denying all read and write operations.
+*   **`.idx/mcp.json`:** Configured for the Firebase multi-cloud platform.
 
-### **3. Visual Design**
+### How to Deploy
 
-*   **Theme:** A bold, modern, and engaging design.
-*   **Color Palette:** A vibrant palette with gradients and strong contrasts to create a sense of excitement. The primary colors will be deep blues and purples, with bright accents for interactive elements.
-*   **Typography:** Expressive and readable fonts. A large, bold font for the main title and generated numbers to draw attention.
-*   **Layout:** A centered, single-column layout that is responsive and works well on both desktop and mobile devices.
-*   **Background:** A subtle noise texture will be applied to the main background to add a premium, tactile feel.
-*   **Iconography & Animation:**
-    *   A lottery ball icon will be used to enhance the theme.
-    *   The generated numbers will have a subtle animation when they appear.
-    *   The main button will have a "glow" effect on hover to indicate interactivity.
-    *   Cards and containers will have soft, deep drop shadows to create a sense of depth and a "lifted" appearance.
-
-### **4. Technical Implementation**
-
-*   **HTML:** Structured with semantic elements (`<header>`, `<main>`, `<footer>`). A `<template>` will be considered for the number display for potential future expansion into a Web Component.
-*   **CSS:** Modern CSS features will be used:
-    *   **CSS Variables:** For theming and easy color management.
-    *   **Flexbox/Grid:** For layout.
-    *   **Gradients & Shadows:** For visual depth and appeal.
-    *   **Transitions & Animations:** For interactive feedback.
-*   **JavaScript:**
-    *   **ES Modules:** Code will be organized into modules.
-    *   **DOM Manipulation:** To update the numbers displayed.
-    *   **Event Listeners:** To handle button clicks.
-
-## **Development Plan (Current Task)**
-
-1.  **`index.html`:**
-    *   Set up the basic HTML structure with a title, header, main content area, and footer.
-    *   Add a `div` to act as the main container for the lottery machine.
-    *   Include a `<h1>` for the title: "Lotto Number Generator".
-    *   Create a `div` to display the generated lottery numbers.
-    *   Add a `<button>` to trigger the generation.
-    *   **Integrate the partnership inquiry form using Formspree, ensuring the `action` attribute points to the correct Formspree endpoint and includes input fields for name, email, and message.**
-2.  **`style.css`:**
-    *   Apply the visual design outlined above.
-    *   Style the body, container, title, number display area, and the button.
-    *   Implement the color palette, fonts, gradients, and shadows.
-3.  **`main.js`:**
-    *   Create a JavaScript function to generate an array of 6 unique random integers between 1 and 45.
-    *   Attach an event listener to the button.
-    *   When the button is clicked, call the generation function and update the content of the number display area.
-    *   Implement a simple animation for the numbers appearing.
+1.  Make sure you have the Firebase CLI installed.
+2.  Log in to your Firebase account using `firebase login`.
+3.  Replace `"YOUR-FIREBASE-PROJECT-ID"` in `.firebaserc` with your actual Firebase project ID.
+4.  Run `firebase deploy` to deploy the website.
