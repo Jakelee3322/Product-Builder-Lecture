@@ -100,13 +100,6 @@ body {
     transition: width 0.5s ease-in-out;
 }
 
-#dog-bar {
-    background-color: #4fc3f7; /* Light blue for dog */
-}
-
-#cat-bar {
-    background-color: #ffb74d; /* Orange for cat */
-}
 
 @media (max-width: 600px) {
     .container {

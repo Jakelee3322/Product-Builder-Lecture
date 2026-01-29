@@ -33,39 +33,58 @@ function readImage(event) {
 async function predict(image) {
     const prediction = await model.predict(image, false);
     
+    // For debugging: log the prediction array to the console
+    console.log(prediction);
+
     // Clear previous results
     labelContainer.innerHTML = ''; 
 
     // Create containers for the result bars
-    const dogContainer = document.createElement('div');
-    dogContainer.classList.add('result-bar-container');
-    const dogBar = document.createElement('div');
-    dogBar.id = 'dog-bar';
-    dogBar.classList.add('result-bar');
-    dogContainer.appendChild(dogBar);
+    const firstPredictionContainer = document.createElement('div');
+    firstPredictionContainer.classList.add('result-bar-container');
+    const firstPredictionBar = document.createElement('div');
+    firstPredictionBar.id = 'first-bar';
+    firstPredictionBar.classList.add('result-bar');
+    firstPredictionContainer.appendChild(firstPredictionBar);
 
-    const catContainer = document.createElement('div');
-    catContainer.classList.add('result-bar-container');
-    const catBar = document.createElement('div');
-    catBar.id = 'cat-bar';
-    catBar.classList.add('result-bar');
-    catContainer.appendChild(catBar);
+    const secondPredictionContainer = document.createElement('div');
+    secondPredictionContainer.classList.add('result-bar-container');
+    const secondPredictionBar = document.createElement('div');
+    secondPredictionBar.id = 'second-bar';
+    secondPredictionBar.classList.add('result-bar');
+    secondPredictionContainer.appendChild(secondPredictionBar);
 
-    labelContainer.appendChild(dogContainer);
-    labelContainer.appendChild(catContainer);
+    labelContainer.appendChild(firstPredictionContainer);
+    labelContainer.appendChild(secondPredictionContainer);
 
-    const dogPrediction = prediction.find(p => p.className === "강아지상");
-    const catPrediction = prediction.find(p => p.className === "고양이상");
+    // Assuming the model returns predictions in a consistent order
+    const firstPrediction = prediction[0];
+    const secondPrediction = prediction[1];
 
-    if (dogPrediction && catPrediction) {
-        const dogPercentage = (dogPrediction.probability * 100).toFixed(0);
-        const catPercentage = (catPrediction.probability * 100).toFixed(0);
+    if (firstPrediction && secondPrediction) {
+        const firstPercentage = (firstPrediction.probability * 100).toFixed(0);
+        const secondPercentage = (secondPrediction.probability * 100).toFixed(0);
 
-        dogBar.style.width = dogPercentage + '%';
-        dogBar.innerHTML = `🐶 강아지 ${dogPercentage}%`;
+        firstPredictionBar.style.width = firstPercentage + '%';
+        // Use the actual class name from the model
+        firstPredictionBar.innerHTML = ` ${firstPrediction.className} ${firstPercentage}%`;
 
-        catBar.style.width = catPercentage + '%';
-        catBar.innerHTML = `🐱 고양이 ${catPercentage}%`;
+        secondPredictionBar.style.width = secondPercentage + '%';
+        // Use the actual class name from the model
+        secondPredictionBar.innerHTML = ` ${secondPrediction.className} ${secondPercentage}%`;
+
+        // Add emojis based on class name
+        if (firstPrediction.className.includes("강아지")) {
+            firstPredictionBar.innerHTML = '🐶' + firstPredictionBar.innerHTML;
+            secondPredictionBar.innerHTML = '🐱' + secondPredictionBar.innerHTML;
+             firstPredictionBar.style.backgroundColor = '#4fc3f7';
+             secondPredictionBar.style.backgroundColor = '#ffb74d';
+        } else {
+            firstPredictionBar.innerHTML = '🐱' + firstPredictionBar.innerHTML;
+            secondPredictionBar.innerHTML = '🐶' + secondPredictionBar.innerHTML;
+            firstPredictionBar.style.backgroundColor = '#ffb74d';
+            secondPredictionBar.style.backgroundColor = '#4fc3f7';
+        }
     }
 }
 
