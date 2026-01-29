@@ -10,6 +10,13 @@ async function init() {
     maxPredictions = model.getTotalClasses();
 
     const imageUpload = document.getElementById("image-upload");
+    const customUploadButton = document.getElementById("custom-upload-button");
+
+    customUploadButton.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent the default label behavior
+        imageUpload.click(); // Programmatically click the hidden file input
+    });
+
     imageUpload.addEventListener("change", (e) => readImage(e));
 
     labelContainer = document.getElementById("label-container");
