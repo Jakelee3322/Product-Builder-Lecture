@@ -1,257 +1,122 @@
-:root {
-    --primary-color-dark: #4a00e0;
-    --secondary-color-dark: #8e2de2;
-    --text-color-dark: #ffffff;
-    --bg-color-dark: #1a1a2e;
-    --container-bg-dark: #1e1e3f;
-
-    --primary-color-light: #f0f0f0;
-    --secondary-color-light: #dcdcdc;
-    --text-color-light: #333333;
-    --bg-color-light: #ffffff;
-    --container-bg-light: #f9f9f9;
-
-    --button-bg: linear-gradient(45deg, var(--primary-color-dark), var(--secondary-color-dark));
-    --button-hover-bg: linear-gradient(45deg, var(--secondary-color-dark), var(--primary-color-dark));
-}
-
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Jua', sans-serif;
+    background-color: #fce4ec; /* Light pink background */
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
+    min-height: 100vh;
     margin: 0;
-    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-body.light-mode {
-    --primary-color: var(--primary-color-light);
-    --secondary-color: var(--secondary-color-light);
-    --text-color: var(--text-color-light);
-    --bg-color: var(--bg-color-light);
-    --container-bg: var(--container-bg-light);
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-    background-image: none;
-}
-
-.theme-switch-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.theme-switch-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    background: var(--button-bg);
-    color: var(--text-color-dark);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-body.light-mode .theme-switch-btn {
-    background: var(--primary-color-light);
-    color: var(--text-color-light);
-    border: 1px solid var(--text-color-light);
-}
-
-.lotto-machine {
-    background-color: var(--container-bg);
-    padding: 40px;
-    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--primary-color-dark);
-    transition: background-color 0.3s, border-color 0.3s;
 }
 
-body.light-mode .lotto-machine {
-    background-color: var(--container-bg-light);
-    border: 1px solid var(--secondary-color-light);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 600px;
 }
 
-h1 {
-    margin-bottom: 30px;
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    color: #ad1457; /* Deep pink for the title */
     font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: transparent;
-    background: var(--button-bg);
-    -webkit-background-clip: text;
-    background-clip: text;
+    margin-bottom: 0.5rem;
 }
 
-body.light-mode h1 {
-    color: var(--text-color-light);
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-}
-
-.numbers-display {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.number {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--text-color-dark);
-    background: var(--button-bg);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: pop-in 0.5s ease-out forwards;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-body.light-mode .number {
-    background: var(--secondary-color-light);
-    color: var(--text-color-light);
-}
-
-.generate-btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    background: var(--button-bg);
-    color: var(--text-color-dark);
+.description {
+    color: #4a148c; /* Purple text */
     font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
 }
 
-.generate-btn:hover {
-    background: var(--button-hover-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+#webcam-container {
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+    position: relative;
+    border: 5px solid #ff80ab; /* Pink border */
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f0f0f0;
 }
 
-body.light-mode .generate-btn {
-    background: var(--primary-color-light);
-    color: var(--text-color-light);
-    border: 1px solid var(--text-color-light);
+#webcam-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-body.light-mode .generate-btn:hover {
-    background: var(--secondary-color-light);
+
+#label-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
 }
 
-@keyframes pop-in {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+.result-bar-container {
+    width: 45%;
+    background-color: #fce4ec; /* Light pink for the bar background */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.contact-form-container {
-    background-color: var(--container-bg);
-    padding: 40px;
-    border-radius: 20px;
+.result-bar {
+    height: 40px;
+    line-height: 40px;
+    color: white;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--primary-color-dark);
-    margin-top: 40px;
-    width: 80%;
-    max-width: 500px;
-    transition: background-color 0.3s, border-color 0.3s;
+    border-radius: 10px 0 0 10px;
+    transition: width 0.5s ease-in-out;
 }
 
-body.light-mode .contact-form-container {
-    background-color: var(--container-bg-light);
-    border: 1px solid var(--secondary-color-light);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+#dog-bar {
+    background-color: #4fc3f7; /* Light blue for dog */
 }
 
-.contact-form-container h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: var(--text-color-dark);
-    transition: color 0.3s;
+#cat-bar {
+    background-color: #ffb74d; /* Orange for cat */
 }
 
-body.light-mode .contact-form-container h2 {
-    color: var(--text-color-light);
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    #label-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .result-bar-container {
+        width: 90%;
+        margin-bottom: 1rem;
+    }
 }
 
-.contact-form input,
-.contact-form textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid var(--primary-color-dark);
-    border-radius: 8px;
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
-    font-size: 1rem;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-body.light-mode .contact-form input,
-body.light-mode .contact-form textarea {
-    border: 1px solid var(--secondary-color-light);
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: var(--text-color-dark);
-    opacity: 0.7;
-    transition: color 0.3s;
-}
-
-body.light-mode .contact-form input::placeholder,
-body.light-mode .contact-form textarea::placeholder {
-    color: var(--text-color-light);
-}
-
-.contact-form button {
-    padding: 12px 25px;
+#start-button {
+    background-color: #ad1457; /* Deep pink */
+    color: white;
     border: none;
-    border-radius: 50px;
-    background: var(--button-bg);
-    color: var(--text-color-dark);
-    font-size: 1.1rem;
-    font-weight: bold;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-family: 'Jua', sans-serif;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+    margin-top: 1rem;
 }
 
-.contact-form button:hover {
-    background: var(--button-hover-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-body.light-mode .contact-form button {
-    background: var(--primary-color-light);
-    color: var(--text-color-light);
-    border: 1px solid var(--text-color-light);
-}
-
-body.light-mode .contact-form button:hover {
-    background: var(--secondary-color-light);
+#start-button:hover {
+    background-color: #880e4f; /* Darker pink on hover */
 }

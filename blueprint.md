@@ -1,28 +1,47 @@
-# Lotto Number Generator
+# 강아지 vs 고양이상 테스트 사이트
 
-This is a simple web application that generates lotto numbers. It also includes a theme switcher and a contact form.
+## 1. 프로젝트 개요
 
-## Features
+이 프로젝트는 사용자의 얼굴을 웹캠으로 실시간 분석하여, Google Teachable Machine으로 학습된 AI 모델을 통해 강아지상에 가까운지, 고양이상에 가까운지를 판단해주는 웹 애플리케이션입니다.
 
-*   **Lotto Number Generation:** Generates 6 unique numbers between 1 and 45.
-*   **Theme Switcher:** Allows switching between a dark and a light theme. The preference is saved in the browser's local storage.
-*   **Contact Form:** A contact form that submits to Formspree.
-*   **Disqus Comments:** A comment section powered by Disqus, allowing users to leave comments.
+## 2. 기능 및 디자인 명세
 
-## Deployment
+### 주요 기능
+- 웹캠을 이용한 실시간 얼굴 인식
+- AI 모델을 활용한 강아지상/고양이상 확률 분석
+- 분석 결과(확률)를 시각적으로 보여주는 UI
+- 결과에 따라 재미있는 메시지나 이미지 표시
 
-This project is configured for deployment with Firebase.
+### 디자인 컨셉
+- **메인 컬러:** 따뜻하고 부드러운 파스텔 톤을 사용하여 사용자에게 편안함을 줍니다.
+- **레이아웃:** 모바일과 웹에서 모두 보기 편하도록 반응형으로 디자인합니다.
+- **UI 요소:**
+    - 웹캠 화면과 분석 결과를 명확하게 분리하여 보여줍니다.
+    - 결과는 막대 그래프 형태로 시각화하여 사용자가 쉽게 이해할 수 있도록 합니다.
+    - 전체적으로 귀엽고 재미있는 느낌을 주는 아이콘과 폰트를 사용합니다.
 
-### Firebase Configuration
+## 3. 개발 계획
 
-*   **`.firebaserc`:** Configures the Firebase project ID. **Note:** You need to replace `"YOUR-FIREBASE-PROJECT-ID"` with your actual Firebase project ID.
-*   **`firebase.json`:** Configures Firebase Hosting. It's set to deploy the contents of the current directory.
-*   **`database.rules.json`:** Basic security rules for Firestore, denying all read and write operations.
-*   **`.idx/mcp.json`:** Configured for the Firebase multi-cloud platform.
+- **1단계: 기본 HTML 구조 설정**
+    - 웹캠 영상과 결과 표시를 위한 기본 HTML 구조를 `index.html`에 추가합니다.
+    - Teachable Machine 모델 라이브러리 스크립트를 추가합니다.
 
-### How to Deploy
+- **2단계: Teachable Machine 모델 연동**
+    - `main.js`에 Teachable Machine 모델을 로드하고 웹캠을 초기화하는 코드를 작성합니다.
+    - 웹캠 영상을 AI 모델로 전달하여 실시간으로 결과를 예측하는 로직을 구현합니다.
 
-1.  Make sure you have the Firebase CLI installed.
-2.  Log in to your Firebase account using `firebase login`.
-3.  Replace `"YOUR-FIREBASE-PROJECT-ID"` in `.firebaserc` with your actual Firebase project ID.
-4.  Run `firebase deploy` to deploy the website.
+- **3단계: 결과 시각화**
+    - `main.js`에서 모델로부터 받은 결과를 HTML 요소에 업데이트하여 보여줍니다.
+    - `style.css`를 수정하여 결과 그래프, 메시지 등을 디자인 컨셉에 맞게 꾸밉니다.
+
+- **4단계: 디자인 및 사용자 경험(UX) 개선**
+    - `style.css`를 전체적으로 수정하여 앱의 완성도를 높입니다.
+    - 사용자가 앱을 사용하는 흐름이 자연스럽도록 버튼, 안내 메시지 등을 추가합니다.
+    - 최종 테스트 및 디버깅을 진행합니다.
+
+## 4. 현재 구현 상태
+
+- 웹캠을 시작하는 '시작하기' 버튼이 추가되어 사용자가 웹캠 활성화 시점을 제어할 수 있게 되었습니다.
+- Teachable Machine 모델 로드 및 실시간 예측 로직이 구현되었습니다.
+- 예측 결과가 시각적인 진행률 막대로 표시됩니다.
+- 전반적인 UI/UX 디자인이 적용되었습니다.
