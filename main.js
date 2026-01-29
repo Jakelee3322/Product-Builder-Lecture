@@ -62,10 +62,10 @@ async function predict(image) {
         const catPercentage = (catPrediction.probability * 100).toFixed(0);
 
         dogBar.style.width = dogPercentage + '%';
-        dogBar.innerHTML = `🐶 강아지상 ${dogPercentage}%`;
+        dogBar.innerHTML = `🐶 강아지 ${dogPercentage}%`;
 
         catBar.style.width = catPercentage + '%';
-        catBar.innerHTML = `🐱 고양이상 ${catPercentage}%`;
+        catBar.innerHTML = `🐱 고양이 ${catPercentage}%`;
     }
 }
 
