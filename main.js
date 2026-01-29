@@ -1,26 +1,41 @@
 const URL = "https://teachablemachine.withgoogle.com/models/PZwcYH36d/";
 
-let model, webcam, labelContainer, maxPredictions;
+let model, labelContainer, maxPredictions;
 
-// Load the image model and setup the webcam
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    // load the model and metadata
     model = await tmImage.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
-    // Convenience function to setup a webcam
-    const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
-    await webcam.setup(); // request access to the webcam
-    await webcam.play();
-    window.requestAnimationFrame(loop);
+    const imageUpload = document.getElementById("image-upload");
+    imageUpload.addEventListener("change", (e) => readImage(e));
 
-    // append elements to the DOM
-    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    labelContainer = document.getElementById("label-container");
+}
+
+function readImage(event) {
+    if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const image = document.getElementById("uploaded-image");
+            image.src = e.target.result;
+            image.style.display = 'block';
+            // Wait for the image to be loaded before predicting
+            image.onload = () => predict(image);
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+
+async function predict(image) {
+    const prediction = await model.predict(image, false);
     
+    // Clear previous results
+    labelContainer.innerHTML = ''; 
+
     // Create containers for the result bars
     const dogContainer = document.createElement('div');
     dogContainer.classList.add('result-bar-container');
@@ -36,33 +51,13 @@ async function init() {
     catBar.classList.add('result-bar');
     catContainer.appendChild(catBar);
 
-    labelContainer = document.getElementById("label-container");
     labelContainer.appendChild(dogContainer);
     labelContainer.appendChild(catContainer);
-
-    // Hide the start button
-    document.getElementById('start-button').style.display = 'none';
-
-}
-
-async function loop() {
-    webcam.update(); // update the webcam frame
-    await predict();
-    window.requestAnimationFrame(loop);
-}
-
-// run the webcam image through the image model
-async function predict() {
-    // predict can take in an image, video or canvas html element
-    const prediction = await model.predict(webcam.canvas);
 
     const dogPrediction = prediction.find(p => p.className === "강아지상");
     const catPrediction = prediction.find(p => p.className === "고양이상");
 
     if (dogPrediction && catPrediction) {
-        const dogBar = document.getElementById('dog-bar');
-        const catBar = document.getElementById('cat-bar');
-
         const dogPercentage = (dogPrediction.probability * 100).toFixed(0);
         const catPercentage = (catPrediction.probability * 100).toFixed(0);
 
@@ -73,3 +68,5 @@ async function predict() {
         catBar.innerHTML = `🐱 고양이상 ${catPercentage}%`;
     }
 }
+
+init();
