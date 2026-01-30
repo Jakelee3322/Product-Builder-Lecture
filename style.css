@@ -282,3 +282,10 @@ input:checked + .slider:before {
     background-color: var(--accent-hover-color);
     transform: translateY(-3px);
 }
+
+#disqus_thread {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 900px;
+    padding: 1rem;
+}
