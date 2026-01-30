@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     const recommendBtn = document.getElementById('recommend-btn');
     const menuDisplay = document.getElementById('menu-display');
+    const themeSwitch = document.getElementById('checkbox');
+
+    // Theme switcher logic
+    if (themeSwitch) {
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }
+        });
+
+        // Apply saved theme on page load
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark-mode') {
+            document.body.classList.add('dark-mode');
+            themeSwitch.checked = true;
+        }
+    }
 
     const dinnerMenus = [
         '김치찌개',

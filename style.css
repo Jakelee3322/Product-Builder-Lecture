@@ -1,12 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
 :root {
-    --bg-color: #f7f2e8;
-    --text-color: #3e3e3e;
-    --accent-color: #ff6347; /* Tomato */
-    --accent-hover-color: #e5533d;
-    --display-bg-color: #ffffff;
-    --display-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --bg-color-light: #f7f2e8;
+    --text-color-light: #3e3e3e;
+    --accent-color-light: #ff6347; /* Tomato */
+    --accent-hover-color-light: #e5533d;
+    --display-bg-color-light: #ffffff;
+    --display-shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --form-bg-color-light: rgba(0, 0, 0, 0.05);
+    --form-border-color-light: #ddd;
+
+    --bg-color-dark: #1a1a1a;
+    --text-color-dark: #f0f0f0;
+    --accent-color-dark: #ff8c69; /* Lighter Tomato for dark mode */
+    --accent-hover-color-dark: #ff6347;
+    --display-bg-color-dark: #2a2a2a;
+    --display-shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --form-bg-color-dark: rgba(255, 255, 255, 0.05);
+    --form-border-color-dark: #444;
+
+    /* Default to light theme */
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --accent-color: var(--accent-color-light);
+    --accent-hover-color: var(--accent-hover-color-light);
+    --display-bg-color: var(--display-bg-color-light);
+    --display-shadow: var(--display-shadow-light);
+    --form-bg-color: var(--form-bg-color-light);
+    --form-border-color: var(--form-border-color-light);
+}
+
+body.dark-mode {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --accent-color: var(--accent-color-dark);
+    --accent-hover-color: var(--accent-hover-color-dark);
+    --display-bg-color: var(--display-bg-color-dark);
+    --display-shadow: var(--display-shadow-dark);
+    --form-bg-color: var(--form-bg-color-dark);
+    --form-border-color: var(--form-border-color-dark);
 }
 
 body {
@@ -14,12 +46,77 @@ body {
     color: var(--text-color);
     font-family: 'Nanum Pen Script', cursive;
     display: flex;
+    flex-direction: column; /* Allow stacking of container and form */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.theme-switch-wrapper {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #525252; /* Dark slider background */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 
 .container {
     padding: 2rem;
@@ -113,12 +210,13 @@ body {
     text-align: center;
     padding: 2rem;
     margin-top: 3rem;
-    background: rgba(0, 0, 0, 0.05); /* Lighter background for light theme */
+    background: var(--form-bg-color);
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+    box-shadow: var(--display-shadow);
+    border: 1px solid var(--form-border-color);
     z-index: 1;
     max-width: 700px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-form-section h2 {
@@ -150,9 +248,9 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--form-border-color);
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Nanum Pen Script', cursive;
     font-size: 1rem;
