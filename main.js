@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeSwitch = document.getElementById('checkbox');
     
     // Animal test elements
-    const animalTestBtn = document.getElementById('animal-test-btn');
-    const animalTestSection = document.getElementById('animal-test-section');
+    const animalTestBtn = document.getElementById('animal-test-btn-corner'); // Updated ID
+    const imageUploadInput = document.getElementById('image-upload-input');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    const labelContainer = document.getElementById('label-container');
 
     // --- Theme Switcher Logic ---
     if (themeSwitch) {
@@ -50,59 +52,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Teachable Machine Animal Test Logic ---
     const URL = "https://teachablemachine.withgoogle.com/models/PZwcYH36d/";
-    let model, webcam, labelContainer, maxPredictions;
-    let isTestRunning = false;
+    let model, maxPredictions;
 
-    if(animalTestBtn) {
-        animalTestBtn.addEventListener('click', () => {
-            if (!isTestRunning) {
-                animalTestSection.classList.remove('hidden');
-                initAnimalTest();
-                isTestRunning = true;
-                animalTestBtn.textContent = "테스트 종료하기";
-            } else {
-                // This is a simple hide, a better implementation would stop the webcam etc.
-                animalTestSection.classList.add('hidden');
-                isTestRunning = false;
-                animalTestBtn.textContent = "동물상 테스트 하러가기";
-                // A more robust solution would properly stop and clean up the webcam and model
-            }
-        });
-    }
-
-    async function initAnimalTest() {
+    // Load the model once
+    async function loadModel() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
-        
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
-
-        const flip = true;
-        webcam = new tmImage.Webcam(200, 200, flip);
-        await webcam.setup();
-        await webcam.play();
-        window.requestAnimationFrame(loop);
-
-        const webcamContainer = document.getElementById("webcam-container");
-        webcamContainer.innerHTML = ''; // Clear previous canvas if any
-        webcamContainer.appendChild(webcam.canvas);
         
-        labelContainer = document.getElementById("label-container");
+        // Prepare label container
         labelContainer.innerHTML = ''; // Clear previous labels
         for (let i = 0; i < maxPredictions; i++) {
             labelContainer.appendChild(document.createElement("div"));
         }
     }
+    loadModel(); // Load model on page load
 
-    async function loop() {
-        if (!isTestRunning) return;
-        webcam.update();
-        await predict();
-        window.requestAnimationFrame(loop);
+    if (imageUploadInput) {
+        imageUploadInput.addEventListener('change', async (event) => {
+            if (event.target.files && event.target.files[0]) {
+                const imageFile = event.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = async (e) => {
+                    // Create an image element and display it
+                    imagePreviewContainer.innerHTML = ''; // Clear previous content
+                    const image = document.createElement('img');
+                    image.src = e.target.result;
+                    image.style.maxWidth = '100%';
+                    image.style.maxHeight = '100%';
+                    imagePreviewContainer.appendChild(image);
+                    
+                    // Wait for the image to load before predicting
+                    image.onload = async () => {
+                        await predict(image);
+                    }
+                };
+                
+                reader.readAsDataURL(imageFile);
+            }
+        });
     }
 
-    async function predict() {
-        const prediction = await model.predict(webcam.canvas);
+    async function predict(imageElement) {
+        const prediction = await model.predict(imageElement);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);

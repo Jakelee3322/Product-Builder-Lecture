@@ -14,6 +14,8 @@
             <div class="slider round"></div>
         </label>
     </div>
+    <button id="animal-test-btn-corner" class="recommend-btn">동물상 테스트</button>
+
     <div class="container">
         <h1 class="title">오늘 저녁 뭐먹지?</h1>
         <button id="recommend-btn" class="recommend-btn">메뉴 추천 받기</button>
@@ -22,14 +24,15 @@
         </div>
     </div>
 
-    <div class="container">
-        <button id="animal-test-btn" class="recommend-btn">동물상 테스트 하러가기</button>
-        <div id="animal-test-section" class="animal-test-section hidden">
-            <h2>동물상 테스트</h2>
-            <p>당신은 강아지상? 고양이상?</p>
-            <div id="webcam-container"></div>
-            <div id="label-container"></div>
+    <div class="container animal-test-section">
+        <h2>동물상 테스트</h2>
+        <p>얼굴 사진을 올려주세요!</p>
+        <div id="image-preview-container">
+            <span>이미지 미리보기</span>
         </div>
+        <label for="image-upload-input" class="upload-label">이미지 선택</label>
+        <input type="file" id="image-upload-input" accept="image/*">
+        <div id="label-container"></div>
     </div>
 
     <section class="contact-form-section">

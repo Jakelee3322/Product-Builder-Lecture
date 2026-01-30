@@ -63,6 +63,16 @@ body {
     z-index: 10;
 }
 
+#animal-test-btn-corner {
+    position: absolute;
+    top: 60px; /* Position below the theme switcher */
+    right: 15px;
+    z-index: 10;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+}
+
+
 .theme-switch {
     position: relative;
     display: inline-block;
@@ -185,26 +195,52 @@ input:checked + .slider:before {
 
 .animal-test-section {
     margin-top: 2rem;
-    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
-    max-height: 1000px; /* Set a large max-height for transition */
-    opacity: 1;
-    overflow: hidden;
+    padding: 2rem;
+    background: var(--form-bg-color);
+    border-radius: 20px;
+    box-shadow: var(--display-shadow);
+    border: 1px solid var(--form-border-color);
 }
 
-.animal-test-section.hidden {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
-    padding: 0;
-}
-
-#webcam-container {
-    margin: 2rem auto;
-    border: 5px solid var(--accent-color);
+#image-preview-container {
+    margin: 1rem auto;
+    border: 3px dashed var(--form-border-color);
     border-radius: 10px;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a0a0a0;
+    font-size: 1.2rem;
 }
+
+#image-preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: var(--accent-hover-color);
+}
+
+#image-upload-input {
+    display: none;
+}
+
 
 #label-container {
     margin-top: 1.5rem;
