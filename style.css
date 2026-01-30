@@ -51,6 +51,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding: 2rem 0;
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -120,6 +121,8 @@ input:checked + .slider:before {
 
 .container {
     padding: 2rem;
+    width: 100%;
+    max-width: 700px;
 }
 
 .title {
@@ -180,6 +183,40 @@ input:checked + .slider:before {
     animation: zoomIn 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+.animal-test-section {
+    margin-top: 2rem;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+    max-height: 1000px; /* Set a large max-height for transition */
+    opacity: 1;
+    overflow: hidden;
+}
+
+.animal-test-section.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding: 0;
+}
+
+#webcam-container {
+    margin: 2rem auto;
+    border: 5px solid var(--accent-color);
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+#label-container {
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+#label-container div {
+    margin-bottom: 0.5rem;
+}
+
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -215,6 +252,7 @@ input:checked + .slider:before {
     box-shadow: var(--display-shadow);
     border: 1px solid var(--form-border-color);
     z-index: 1;
+    width: 100%;
     max-width: 700px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }

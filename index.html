@@ -21,7 +21,17 @@
             <p class="placeholder">버튼을 눌러 추천을 받아보세요!</p>
         </div>
     </div>
-    <script src="main.js?v=4"></script>
+
+    <div class="container">
+        <button id="animal-test-btn" class="recommend-btn">동물상 테스트 하러가기</button>
+        <div id="animal-test-section" class="animal-test-section hidden">
+            <h2>동물상 테스트</h2>
+            <p>당신은 강아지상? 고양이상?</p>
+            <div id="webcam-container"></div>
+            <div id="label-container"></div>
+        </div>
+    </div>
+
     <section class="contact-form-section">
         <h2>제휴 문의</h2>
         <form action="https://formspree.io/f/mvzrznve" method="POST" class="contact-form">
@@ -41,6 +51,10 @@
         </form>
     </section>
     <div id="disqus_thread"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="main.js?v=4"></script>
     <script>
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
