@@ -1,55 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const recommendBtn = document.getElementById('recommend-btn');
-    const menuDisplay = document.getElementById('menu-display');
-    const themeSwitch = document.getElementById('checkbox');
+// More API functions here:
+// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-    // Theme switcher logic
-    if (themeSwitch) {
-        themeSwitch.addEventListener('change', () => {
-            if (themeSwitch.checked) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light-mode');
-            }
-        });
+// the link to your model provided by Teachable Machine export panel
+const URL = "https://teachablemachine.withgoogle.com/models/PZwcYH36d/";
 
-        // Apply saved theme on page load
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark-mode') {
-            document.body.classList.add('dark-mode');
-            themeSwitch.checked = true;
-        }
+let model, webcam, labelContainer, maxPredictions;
+
+// Load the image model and setup the webcam
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    // load the model and metadata
+    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+    // or files from your local hard drive
+    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    // Convenience function to setup a webcam
+    const flip = true; // whether to flip the webcam
+    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+
+    // append elements to the DOM
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    labelContainer = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions; i++) { // and class labels
+        labelContainer.appendChild(document.createElement("div"));
     }
+}
 
-    const dinnerMenus = [
-        '김치찌개',
-        '된장찌개',
-        '비빔밥',
-        '불고기',
-        '제육볶음',
-        '삼겹살 구이',
-        '치킨',
-        '피자',
-        '파스타',
-        '떡볶이',
-        '순대국',
-        '족발 또는 보쌈',
-        '카레라이스',
-        '돈까스',
-        '짜장면'
-    ];
+async function loop() {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+}
 
-    recommendBtn.addEventListener('click', () => {
-        menuDisplay.classList.remove('reveal');
-
-        // 추천 애니메이션 효과를 위해 잠시 대기
-        setTimeout(() => {
-            const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
-            const recommendedMenu = dinnerMenus[randomIndex];
-            menuDisplay.innerHTML = `<p class="menu-item">'${recommendedMenu}' 어떠세요?</p>`;
-            menuDisplay.classList.add('reveal');
-        }, 100);
-    });
-});
+// run the webcam image through the image model
+async function predict() {
+    // predict can take in an image, video or canvas html element
+    const prediction = await model.predict(webcam.canvas);
+    for (let i = 0; i < maxPredictions; i++) {
+        const classPrediction =
+            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        labelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+}
