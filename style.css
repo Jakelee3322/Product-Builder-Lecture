@@ -152,6 +152,11 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+body.light-mode h1 {
+    color: #FFFFFF; /* 라이트 모드에서 H1 색상을 흰색으로 설정 */
+}
+
+
 p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
