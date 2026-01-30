@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Animal test elements
     const animalTestBtn = document.getElementById('animal-test-btn-corner'); // Updated ID
+    const animalTestSection = document.querySelector('.animal-test-section'); // Select the section
     const imageUploadInput = document.getElementById('image-upload-input');
     const imagePreviewContainer = document.getElementById('image-preview-container');
     const labelContainer = document.getElementById('label-container');
@@ -53,11 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Teachable Machine Animal Test Logic ---
     const URL = "https://teachablemachine.withgoogle.com/models/PZwcYH36d/";
     let model, maxPredictions;
+    let isAnimalTestSectionVisible = false; // Track visibility state
 
     // Load the model once
     async function loadModel() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
+        
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
         
@@ -68,6 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     loadModel(); // Load model on page load
+
+    // Toggle animal test section visibility
+    if (animalTestBtn && animalTestSection) {
+        animalTestBtn.addEventListener('click', () => {
+            if (isAnimalTestSectionVisible) {
+                animalTestSection.classList.add('hidden');
+                animalTestBtn.textContent = '동물상 테스트';
+                isAnimalTestSectionVisible = false;
+                // Optional: Clear displayed image and labels when hiding
+                imagePreviewContainer.innerHTML = '<span>이미지 미리보기</span>';
+                labelContainer.innerHTML = '';
+            } else {
+                animalTestSection.classList.remove('hidden');
+                animalTestBtn.textContent = '테스트 닫기';
+                isAnimalTestSectionVisible = true;
+            }
+        });
+    }
 
     if (imageUploadInput) {
         imageUploadInput.addEventListener('change', async (event) => {
