@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘 저녁 뭐먹지?</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>오늘 뭐하지?</title>
+    <link rel="stylesheet" href="style.css?v=5">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <meta name="google-adsense-account" content="ca-pub-7984473058960158">
 </head>
@@ -12,90 +12,134 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7984473058960158"
      crossorigin="anonymous"></script>
 
-    <nav>
-        <ul>
-            <li><a href="#dinner">오늘 저녁 뭐먹지?</a></li>
-            <li><a href="#animal-test">동물상 테스트</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#contact">제휴 문의</a></li>
-        </ul>
+    <header>
+        <div class="container">
+            <h1 class="main-title">🌟 오늘 뭐하지? 🌟</h1>
+            <p class="subtitle">일상의 모든 고민, 여기서 해결!</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">🏠 홈</a></li>
+                <li class="dropdown">
+                    <a href="eat.html">🍽️ 오늘 뭐 먹지?</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="eat_recommend.html">🎲 메뉴 추천 (랜덤/상황별)</a></li>
+                        <li><a href="eat_encyclopedia.html">📖 음식 백과</a></li>
+                        <li><a href="eat_recipe.html">🍳 레시피 모음</a></li>
+                        <li><a href="eat_restaurant.html">📍 맛집 정보</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="watch.html">🎬 오늘 뭐 볼까?</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="watch_movie.html">🎥 영화 추천</a></li>
+                        <li><a href="watch_tv.html">📺 드라마/예능 추천</a></li>
+                        <li><a href="watch_youtube.html">📹 유튜브 큐레이션</a></li>
+                        <li><a href="watch_music.html">🎵 음악 플레이리스트</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="learn.html">📚 오늘 뭐 배울까?</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="learn_power_electronics.html">⚡ 전력전자 기초</a></li>
+                        <li><a href="learn_bms.html">🔋 BMS 입문</a></li>
+                        <li><a href="learn_ev.html">🚗 전기차 상식</a></li>
+                        <li><a href="learn_career.html">💼 커리어 가이드</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="play.html">🎮 오늘 뭐 하고 놀까?</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="play_hobby.html">🎯 취미 추천</a></li>
+                        <li><a href="play_activity.html">🏃 운동/액티비티</a></li>
+                        <li><a href="play_travel.html">✈️ 여행지 추천</a></li>
+                        <li><a href="play_shopping.html">🛒 쇼핑 트렌드</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="info.html">💡 오늘의 정보</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="info_news.html">📰 트렌드 뉴스</a></li>
+                        <li><a href="info_tips.html">💰 생활 꿀팁</a></li>
+                        <li><a href="info_weather.html">🌤️ 날씨별 추천</a></li>
+                        <li><a href="info_seasonal.html">📅 시즌별 추천</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">👤 About / 문의</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">사이트 소개</a></li>
+                        <li><a href="profile.html">운영자 프로필</a></li>
+                        <li><a href="privacy.html">개인정보처리방침</a></li>
+                        <li><a href="terms.html">이용약관</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-    </div>
-    <button id="animal-test-btn-corner" class="recommend-btn">동물상 테스트</button>
+    <main class="container">
+        <section class="category-grid">
+            <div class="card">
+                <h2>🍽️ 오늘 뭐 먹지?</h2>
+                <p>메뉴 추천, 음식 백과, 레시피, 맛집 정보</p>
+                <a href="eat.html" class="btn">바로가기</a>
+            </div>
+            <div class="card">
+                <h2>🎬 오늘 뭐 볼까?</h2>
+                <p>영화, 드라마, 예능, 유튜브, 음악 추천</p>
+                <a href="watch.html" class="btn">바로가기</a>
+            </div>
+            <div class="card">
+                <h2>📚 오늘 뭐 배울까?</h2>
+                <p>전력전자, BMS, 전기차, 커리어 가이드</p>
+                <a href="learn.html" class="btn">바로가기</a>
+            </div>
+            <div class="card">
+                <h2>🎮 오늘 뭐 하고 놀까?</h2>
+                <p>취미, 액티비티, 여행, 쇼핑 트렌드</p>
+                <a href="play.html" class="btn">바로가기</a>
+            </div>
+            <div class="card">
+                <h2>💡 오늘의 정보</h2>
+                <p>뉴스, 꿀팁, 날씨, 시즌별 추천</p>
+                <a href="info.html" class="btn">바로가기</a>
+            </div>
+             <div class="card">
+                <h2>👤 About / 문의</h2>
+                <p>사이트, 운영자, 개인정보 및 이용약관</p>
+                <a href="about.html" class="btn">바로가기</a>
+            </div>
+        </section>
 
-    <div id="dinner" class="container">
-        <h1 class="title">오늘 저녁 뭐먹지?</h1>
-        <button id="recommend-btn" class="recommend-btn">메뉴 추천 받기</button>
-        <div id="menu-display" class="menu-display">
-            <p class="placeholder">버튼을 눌러 추천을 받아보세요!</p>
-        </div>
-        <div class="ad-placeholder-container">
-            <div class="ad-placeholder">광고</div>
-        </div>
-    </div>
+        <!-- ad-sense -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7984473058960158"
+            data-ad-slot="1234567890"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
-    <div id="animal-test" class="container animal-test-section hidden">
-        <h2>동물상 테스트</h2>
-        <p>얼굴 사진을 올려주세요!</p>
-        <div id="image-preview-container">
-            <span>이미지 미리보기</span>
-        </div>
-        <label for="image-upload-input" class="upload-label">이미지 선택</label>
-        <input type="file" id="image-upload-input" accept="image/*">
-        <div id="label-container"></div>
-    </div>
+    </main>
 
-    <section id="about-us" class="about-us-section">
+    <footer>
         <div class="container">
-            <h2>About Us</h2>
-            <p>'오늘 저녁 뭐먹지?'는 여러분의 저녁 메뉴 고민을 덜어드리기 위해 만들어진 웹사이트입니다. 저희는 매일 저녁 메뉴를 고민하는 분들을 위해 간단하고 재미있는 방법으로 메뉴를 추천해드립니다.</p>
-            <div class="ad-placeholder-container">
-                <div class="ad-placeholder">광고</div>
-            </div>
-            <p>또한, 최신 기술을 활용하여 여러분의 얼굴이 강아지상인지 고양이상인지 알려주는 '동물상 테스트' 기능도 제공하고 있습니다.</p>
-            <p>여러분의 즐거운 저녁 시간을 위해 항상 노력하겠습니다.</p>
+            <a href="about.html">About</a> |
+            <a href="privacy.html">개인정보처리방침</a> |
+            <a href="terms.html">이용약관</a> |
+            <a href="contact.html">문의하기</a>
+            <p>© 2026 오늘 뭐하지?</p>
         </div>
-    </section>
+    </footer>
 
-    <section id="contact" class="contact-form-section">
-        <h2>제휴 문의</h2>
-        <form action="https://formspree.io/f/mvzrznve" method="POST" class="contact-form">
-            <div class="form-group">
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">이메일:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">메시지:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">보내기</button>
-        </form>
-    </section>
-    <div id="disqus_thread"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="main.js?v=4"></script>
+    <script src="main.js?v=5"></script>
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
         (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
         s.src = 'https://product-builder-lee.disqus.com/embed.js';
@@ -104,11 +148,5 @@
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-    <footer>
-        <div class="container">
-            <a href="privacy.html">개인정보처리방침</a>
-        </div>
-    </footer>
 </body>
 </html>
