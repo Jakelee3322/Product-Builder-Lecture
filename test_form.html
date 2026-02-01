@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제휴 문의 테스트</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+    <main class="container">
+        <h1>제휴 문의 테스트</h1>
+        <p>이 페이지는 제휴 문의 양식의 작동을 테스트하기 위한 것입니다.</p>
+        
+        <form id="partnership-form" action="https://formspree.io/f/xkoznkyg" method="POST">
+            <div class="form-group">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="company">회사/단체명:</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="message">문의 내용:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">보내기</button>
+        </form>
+        <p id="partnership-form-status"></p>
+    </main>
+    <script src="main.js?v=5"></script>
+</body>
+</html>
