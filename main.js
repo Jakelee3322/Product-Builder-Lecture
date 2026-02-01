@@ -247,4 +247,46 @@ document.addEventListener('DOMContentLoaded', () => {
             applyTheme(newTheme);
         });
     }
+
+    // --- Partnership Form Logic ---
+    const partnershipForm = document.getElementById('partnership-form');
+    const partnershipFormStatus = document.getElementById('partnership-form-status');
+
+    if (partnershipForm) {
+        partnershipForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            
+            try {
+                partnershipFormStatus.textContent = '전송 중...';
+                partnershipFormStatus.style.color = 'blue';
+
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    partnershipFormStatus.textContent = '제휴 문의가 성공적으로 전송되었습니다. 감사합니다!';
+                    partnershipFormStatus.style.color = 'green';
+                    form.reset();
+                } else {
+                    const responseData = await response.json();
+                    if (Object.hasOwn(responseData, 'errors')) {
+                        partnershipFormStatus.textContent = responseData["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        partnershipFormStatus.textContent = '제휴 문의 전송에 실패했습니다. 다시 시도해주세요.';
+                    }
+                    partnershipFormStatus.style.color = 'red';
+                }
+            } catch (error) {
+                partnershipFormStatus.textContent = '제휴 문의 전송 중 오류가 발생했습니다.';
+                partnershipFormStatus.style.color = 'red';
+            }
+        });
+    }
 });
