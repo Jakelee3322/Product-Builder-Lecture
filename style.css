@@ -392,3 +392,73 @@ footer p {
     background-color: var(--accent-color);
     color: white;
 }
+
+/* Contact Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    font-family: sans-serif; /* Use a more readable font for input */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#form-status {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+
+/* Learn Page Styles */
+.learn-container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.learn-input-area {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#learn-input {
+    flex-grow: 1;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.learn-results-area {
+    text-align: left;
+    background: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    min-height: 100px;
+}
+
+.learn-results-area ul {
+    padding-left: 20px;
+    list-style: square;
+}
+
+.learn-results-area li {
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
