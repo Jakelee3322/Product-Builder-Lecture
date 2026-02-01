@@ -117,6 +117,32 @@
             </div>
         </section>
 
+        <section class="content-section card">
+            <h2 class="title">제휴 문의</h2>
+            <p>저희 '오늘 뭐하지?'와 함께하실 파트너를 찾습니다. 제휴 관련 문의사항이 있으시면 아래 양식을 통해 연락 주세요.</p>
+            
+            <form id="partnership-form" action="https://formspree.io/f/xkoznkyg" method="POST">
+                <div class="form-group">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">회사/단체명:</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">보내기</button>
+            </form>
+            <p id="partnership-form-status"></p>
+        </section>
+
         <!-- ad-sense -->
         <ins class="adsbygoogle"
             style="display:block"

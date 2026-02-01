@@ -294,27 +294,12 @@ footer {
     color: white;
 }
 
-.form-group input,
-.form-group textarea {
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
+/* Form Styles Enhancement */
+.card form {
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.learn-results-area {
-    background: var(--card-bg-color);
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--border-color);
-}
-
-#learn-input {
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-
-/* Contact Form Styles */
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -324,10 +309,34 @@ footer {
     display: block;
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
+    font-family: var(--font-family-base);
 }
 
-#form-status {
-    margin-top: 1rem;
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-size: 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 126, 103, 0.3);
+}
+
+#partnership-form-status, #form-status {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-height: 1.5rem; 
 }
 
